@@ -7,6 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -37,7 +38,7 @@
 </nav>
 
 <!-- HERO -->
-<header class="hero d-flex align-items-center justify-content-center text-center text-white" id="home" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/img/Boda Civil/2.jpg') center/cover;">
+<header class="hero d-flex align-items-center justify-content-center text-center text-white" id="home" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/img/Boda civil/001.jpg') center/cover;">
   <div class="container">
     <h1 class="display-4 fw-bold mb-3" data-aos="fade-up">Capturamos momentos únicos</h1>
     <p class="lead" data-aos="fade-up" data-aos-delay="200">Fotografía & Video profesional para tus eventos más especiales</p>
@@ -196,7 +197,7 @@
      <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
         <a href="categorias.html?cat=sesiones_estudio" class="text-decoration-none text-dark">
           <div class="card border-0 shadow-sm h-100">
-            <img src="assets/img/Sesiones de Estudio/4.jpeg" class="card-img-top" alt="Sesiones en Estudio">
+            <img src="assets/img/Sesiones de Estudio/8.jpeg" class="card-img-top" alt="Sesiones en Estudio">
             <div class="card-body text-center">
               <h5 class="card-title">Sesiones en Estudio</h5>
               <p class="card-text text-muted">Retratos profesionales en estudio.</p>
@@ -226,6 +227,17 @@
           </div>
         </a>
       </div>
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up">
+        <a href="categorias.html?cat=propuestas_matrimonio" class="text-decoration-none text-dark">
+          <div class="card border-0 shadow-sm h-100">
+            <img src="assets/img/Propuesta de Matrimonio/1.jpeg" class="card-img-top" alt="Propuestas de Matrimonio">
+            <div class="card-body text-center">
+              <h5 class="card-title">Propuestas de matrimonio</h5>
+              <p class="card-text text-muted">Fotos llenas de energía infantil.</p>
+            </div>
+          </div>
+        </a>
+      </div>
       
     </div>
   </div>
@@ -235,60 +247,41 @@
 <section class="py-5 bg-light" id="reels">
   <div class="container">
     <h2 class="text-center text-brown mb-5">Video Highlights</h2>
-    <div class="row g-4">
-      <div class="col-md-6" data-aos="fade-up">
-        <video class="w-100 rounded shadow" autoplay muted loop controls>
-          <source src="assets/video/Resumen boda.mp4" type="video/mp4">
-        </video>
+    <div id="videoHighlightsCarousel" class="carousel slide" data-bs-ride="false">
+      
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-aos="fade-up">
+          <div class="video-container mx-auto">
+            <div class="ratio ratio-16x9 rounded-4 shadow-lg overflow-hidden border border-brown">
+              <iframe src="https://geo.dailymotion.com/player.html?video=xa83q7q&api=postMessage&loop=1&queue-enable=0&endscreen-enable=0" style="width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden; border:none;" allowfullscreen title="Dailymotion Video Player" allow="web-share"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="video-container mx-auto">
+            <div class="ratio ratio-16x9 rounded-4 shadow-lg overflow-hidden border border-brown">
+              <iframe src="https://geo.dailymotion.com/player.html?video=xa83qki&api=postMessage&loop=1&queue-enable=0&endscreen-enable=0" style="width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden; border:none;" allowfullscreen title="Dailymotion Video Player" allow="web-share"></iframe>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-        <video class="w-100 rounded shadow" autoplay muted loop controls>
-          <source src="assets/video/Resumen Presentacion.mp4" type="video/mp4">
-        </video>
-      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#videoHighlightsCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-brown rounded-circle p-3" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#videoHighlightsCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-brown rounded-circle p-3" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+    <div id="videoCaption" class="video-caption text-center mt-3">
+      <h5 class="text-brown">Boda Elegante</h5>
+      <p class="text-muted">Capturando el amor eterno</p>
     </div>
   </div>
 </section>
 
 
-<!-- SERVICIOS -->
-<section class="py-5">
-  <div class="container">
-    <h2 class="text-center text-brown mb-5">Servicios</h2>
-    <div class="row g-4">
-      <div class="col-md-4" data-aos="fade-up">
-        <div class="card border-0 shadow-sm h-100 text-center">
-          <div class="card-body">
-            <h5 class="card-title text-brown">Bodas</h5>
-            <p class="card-text">Cobertura completa de tu día especial, desde la preparación hasta el primer baile.</p>
-            <p class="text-muted">Desde $10,000 MXN</p>
-            <a href="#contact" class="btn btn-brown">Cotizar</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="card border-0 shadow-sm h-100 text-center">
-          <div class="card-body">
-            <h5 class="card-title text-brown">XV Años</h5>
-            <p class="card-text">Sesiones personalizadas para celebrar tu quinceañera con estilo y elegancia.</p>
-            <p class="text-muted">Desde $8,000 MXN</p>
-            <a href="#contact" class="btn btn-brown">Cotizar</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
-        <div class="card border-0 shadow-sm h-100 text-center">
-          <div class="card-body">
-            <h5 class="card-title text-brown">Sesiones</h5>
-            <p class="card-text">Fotografía de estudio o al aire libre para parejas, familias y eventos especiales.</p>
-            <p class="text-muted">Desde $800 MXN</p>
-            <a href="#contact" class="btn btn-brown">Cotizar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- CONTACTO -->
 <section class="py-5 bg-beige" id="contact">
@@ -296,18 +289,18 @@
     <h2 class="text-center text-brown mb-5">Cotiza tu evento</h2>
     <div class="row g-5">
       <div class="col-lg-6" data-aos="fade-right">
-        <form>
+        <form id="contactForm">
           <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Nombre" required>
+            <input type="text" id="name" class="form-control" placeholder="Nombre" required>
           </div>
           <div class="mb-3">
-            <input type="email" class="form-control" placeholder="Correo" required>
+            <input type="email" id="email" class="form-control" placeholder="Correo" required>
           </div>
           <div class="mb-3">
-            <input type="tel" class="form-control" placeholder="Teléfono">
+            <input type="tel" id="phone" class="form-control" placeholder="Teléfono">
           </div>
           <div class="mb-3">
-            <select class="form-select">
+            <select id="service" class="form-select">
               <option selected>Servicio</option>
               <option>Bodas</option>
               <option>XV Años</option>
@@ -316,18 +309,17 @@
             </select>
           </div>
           <div class="mb-3">
-            <textarea class="form-control" rows="4" placeholder="Describe tu evento"></textarea>
+            <textarea id="message" class="form-control" rows="4" placeholder="Describe tu evento"></textarea>
           </div>
-          <button class="btn btn-brown btn-lg">Enviar cotización</button>
+          <button type="submit" class="btn btn-brown btn-lg">Enviar cotización</button>
         </form>
       </div>
       <div class="col-lg-6" data-aos="fade-left">
         <h5 class="text-brown mb-3">Información de contacto</h5>
         <p><strong>Dirección:</strong> Calle 16 de Septiembre #13, Colonia la mangana, Ciudad Hidalgo, Michoacán</p>
-        <p><strong>Teléfono:</strong> +52 123 456 7890</p>
         <p><strong>Email:</strong> info@lupitamphotography.com</p>
         <div class="mt-4">
-          <iframe src="https://www.google.com/maps/place/19%C2%B041'34.6%22N+100%C2%B033'34.2%22W/@19.6929398,-100.5620798,17z/data=!3m1!4b1!4m4!3m3!8m2!3d19.6929398!4d-100.5595049?hl=es&entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D"></iframe>
+          <iframe src="https://www.google.com/maps?q=Calle+16+de+Septiembre+13+Colonia+La+Mangana+Ciudad+Hidalgo+Michoacan&output=embed" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>
@@ -342,6 +334,11 @@
   </div>
 </footer>
 
+<a href="https://wa.me/527861116672" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Contáctanos por WhatsApp">
+  <span>💬</span>
+  <span>Contáctanos</span>
+</a>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
@@ -352,6 +349,91 @@
 </script>
 <script src="data/data.js"></script>
 <script src="js/app.js"></script>
+<script>
+  // Inicializar EmailJS
+  (function(){
+    emailjs.init("XN4AaJN5UdChS6glD"); // Reemplaza con tu clave pública real
+  })();
+
+  // Función para enviar el formulario
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const service = document.getElementById('service').value;
+    const message = document.getElementById('message').value;
+
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      phone: phone,
+      service: service,
+      message: message,
+      to_email: 'ramon.d.g85@gmail.com'
+    };
+
+    emailjs.send('service_a6miqsi', 'template_ax1jz7r', templateParams) // Reemplaza con tus IDs reales
+      .then(function(response) {
+        alert('Mensaje enviado exitosamente!');
+        document.getElementById('contactForm').reset();
+      }, function(error) {
+        alert('Error al enviar el mensaje: ' + JSON.stringify(error));
+      });
+  });
+
+  // Pausar videos cuando se cambia de slide en el carrusel
+  const captions = [
+    { title: 'Boda Elegante', desc: 'Capturando el amor eterno' },
+    { title: 'Presentación Familiar', desc: 'Momentos inolvidables' }
+  ];
+
+  function updateCaption(index) {
+    const captionDiv = document.getElementById('videoCaption');
+    captionDiv.innerHTML = `<h5 class="text-brown">${captions[index].title}</h5><p class="text-muted">${captions[index].desc}</p>`;
+  }
+
+  document.getElementById('videoHighlightsCarousel').addEventListener('slid.bs.carousel', function (event) {
+    const activeIndex = Array.from(event.target.querySelectorAll('.carousel-item')).findIndex(item => item.classList.contains('active'));
+    updateCaption(activeIndex);
+
+    // Pausar todos los iframes
+    const iframes = document.querySelectorAll('#videoHighlightsCarousel iframe');
+    iframes.forEach(iframe => {
+      iframe.contentWindow.postMessage(JSON.stringify({ command: 'pause' }), '*');
+    });
+  });
+
+  function setupDailymotionLoop() {
+    const iframes = Array.from(document.querySelectorAll('#videoHighlightsCarousel iframe'));
+    iframes.forEach(iframe => {
+      iframe.addEventListener('load', () => {
+        iframe.contentWindow.postMessage(JSON.stringify({ command: 'addEventListener', event: 'video_end' }), '*');
+      });
+    });
+
+    window.addEventListener('message', (event) => {
+      let message;
+      try {
+        message = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+      } catch (err) {
+        return;
+      }
+
+      if (message && message.event === 'video_end') {
+        const iframes = document.querySelectorAll('#videoHighlightsCarousel iframe');
+        iframes.forEach(iframe => {
+          iframe.contentWindow.postMessage(JSON.stringify({ command: 'play' }), '*');
+        });
+      }
+    });
+  }
+
+  // Inicializar caption y bucle de video
+  updateCaption(0);
+  setupDailymotionLoop();
+</script>
 
 </body>
 </html>

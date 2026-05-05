@@ -58,8 +58,7 @@
     xv: 'XV Años',
     ceremonias_presentaciones: 'Presentaciones',
     ceremonias_bautizos: 'Bautizos',
-    ceremonias_primeras_comuniones: 'Primeras comuniones',
-    sesion_casual: 'Sesión Casual',
+    ceremonias_primeras_comuniones: 'Primeras comuniones',  propuestas_matrimonio: 'Propuestas de Matrimonio',    sesion_casual: 'Sesión Casual',
     sesion_pareja: 'Sesión en pareja',
     sesion_cumpleanos: 'Sesión de cumpleaños',
     sesion_newborn: 'Sesión NewBorn',
@@ -76,6 +75,14 @@
   const renderFilterButtons = () => {
     const container = document.getElementById('categoryFilters');
     container.innerHTML = '';
+
+    if (categoria) {
+      // Oculta los botones de filtro cuando ya hay una categoría seleccionada.
+      container.style.display = 'none';
+      return;
+    }
+
+    container.style.display = 'flex';
 
     const createButton = (slug, label) => {
       const button = document.createElement('button');
@@ -121,6 +128,7 @@
   };
 
   document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('galleryTitle').textContent = categoria ? titles[categoria] : 'Galería';
     renderFilterButtons();
     renderMedia('galeria', categoria, tipo);
   });
