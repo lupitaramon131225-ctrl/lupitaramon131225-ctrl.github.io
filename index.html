@@ -7,9 +7,18 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
+
+  <div id="loader">
+
+  <div class="spinner"></div>
+
+  <h2>Cargando experiencia...</h2>
+
+</div>
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
@@ -32,13 +41,16 @@
         <li class="nav-item">
           <a class="nav-link text-brown" href="#contact">Contacto</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-brown" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Admin</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
-<header class="hero d-flex align-items-center justify-content-center text-center text-white" id="home" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/img/Boda Civil/001.jpg') center/cover;">
+<header class="hero d-flex align-items-center justify-content-center text-center text-white" id="home" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/img/Boda civil/001.jpg') center/cover;">
   <div class="container">
     <h1 class="display-4 fw-bold mb-3" data-aos="fade-up">Capturamos momentos únicos</h1>
     <p class="lead" data-aos="fade-up" data-aos-delay="200">Fotografía & Video profesional para tus eventos más especiales</p>
@@ -233,7 +245,7 @@
             <img src="assets/img/Propuesta de Matrimonio/1.jpeg" class="card-img-top" alt="Propuestas de Matrimonio">
             <div class="card-body text-center">
               <h5 class="card-title">Propuestas de matrimonio</h5>
-              <p class="card-text text-muted">Fotos llenas de energía infantil.</p>
+              <p class="card-text text-muted">Fotos llenas de emociones.</p>
             </div>
           </div>
         </a>
@@ -253,15 +265,37 @@
         <div class="carousel-item active" data-aos="fade-up">
           <div class="video-container mx-auto">
             <div class="ratio ratio-16x9 rounded-4 shadow-lg overflow-hidden border border-brown">
-              <iframe src="https://geo.dailymotion.com/player.html?video=xa83q7q&api=postMessage&loop=1&queue-enable=0&endscreen-enable=0" style="width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden; border:none;" allowfullscreen title="Dailymotion Video Player" allow="web-share"></iframe>
-            </div>
+          <iframe
+             src="https://drive.google.com/file/d/1iWb3Z-ELVtzF31cPED4FkgqP6RX7V2ex/preview"
+             width="100%"
+             height="500"
+            allow="autoplay">
+          </iframe>              
+        </div>
           </div>
         </div>
         <div class="carousel-item" data-aos="fade-up" data-aos-delay="200">
           <div class="video-container mx-auto">
             <div class="ratio ratio-16x9 rounded-4 shadow-lg overflow-hidden border border-brown">
-              <iframe src="https://geo.dailymotion.com/player.html?video=xa83qki&api=postMessage&loop=1&queue-enable=0&endscreen-enable=0" style="width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden; border:none;" allowfullscreen title="Dailymotion Video Player" allow="web-share"></iframe>
-            </div>
+        <iframe
+             src="https://drive.google.com/file/d/11Xypm7h2KdbuBXRZp5iGSRyN5UFat9aa/preview"
+             width="100%"
+             height="500"
+            allow="autoplay">
+          </iframe>           
+         </div>
+          </div>
+        </div>
+        <div class="carousel-item" data-aos="fade-up">
+          <div class="video-container mx-auto">
+            <div class="ratio ratio-16x9 rounded-4 shadow-lg overflow-hidden border border-brown">
+          <iframe
+             src="https://drive.google.com/file/d/1yenPe1eDfxQeGb76OKfrjnU8PNzPgo7R/preview"
+             width="100%"
+             height="500"
+            allow="autoplay">
+          </iframe>              
+        </div>
           </div>
         </div>
       </div>
@@ -322,9 +356,54 @@
           <iframe src="https://www.google.com/maps?q=Calle+16+de+Septiembre+13+Colonia+La+Mangana+Ciudad+Hidalgo+Michoacan&output=embed" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
+
+      <p class="social-title">Sígueme en redes sociales</p>
+
+<div class="socials">
+  <a href="#" class="facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+
+  <a href="#" class="instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <a href="#" class="whatsapp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
     </div>
   </div>
 </section>
+
+<!-- MODAL LOGIN -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-brown" id="loginModalLabel">Acceso de Administrador</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="loginForm">
+          <div class="mb-3">
+            <label for="username" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="username" placeholder="Ingresa tu usuario" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
+          </div>
+          <div id="loginError" class="alert alert-danger d-none" role="alert">Usuario o contraseña incorrectos</div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-brown" id="loginBtn">Iniciar Sesión</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer class="bg-brown text-white py-4">
@@ -385,8 +464,9 @@
 
   // Pausar videos cuando se cambia de slide en el carrusel
   const captions = [
-    { title: 'Boda Elegante', desc: 'Capturando el amor eterno' },
-    { title: 'Presentación Familiar', desc: 'Momentos inolvidables' }
+    { title: 'Boda Religiosa C + A', desc: 'Capturando el amor eterno' },
+    { title: 'Presentación Familiar', desc: 'Momentos inolvidables' },
+    { title: 'Boda Religiosa V + L', desc: '' }
   ];
 
   function updateCaption(index) {
@@ -433,7 +513,47 @@
   // Inicializar caption y bucle de video
   updateCaption(0);
   setupDailymotionLoop();
+
+  // Sistema de Login
+  const VALID_USER = 'lupita';
+  const VALID_PASSWORD = 'Luna85';
+
+  document.getElementById('loginBtn').addEventListener('click', function() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const errorDiv = document.getElementById('loginError');
+
+    if (username === VALID_USER && password === VALID_PASSWORD) {
+      sessionStorage.setItem('adminLoggedIn', 'true');
+      sessionStorage.setItem('adminUser', username);
+      errorDiv.classList.add('d-none');
+      window.location.href = 'admin.html';
+    } else {
+      errorDiv.classList.remove('d-none');
+    }
+  });
+
+  document.getElementById('loginForm').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      document.getElementById('loginBtn').click();
+    }
+  });
 </script>
 
+<script>
+
+window.addEventListener("load", () => {
+
+  const loader = document.getElementById("loader");
+
+  loader.style.opacity = "0";
+
+  setTimeout(() => {
+    loader.style.display = "none";
+  }, 500);
+
+});
+
+</script>
 </body>
 </html>

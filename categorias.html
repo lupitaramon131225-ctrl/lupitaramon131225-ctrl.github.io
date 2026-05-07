@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,137 +9,197 @@
   <link rel="stylesheet" href="css/styles.css">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
+
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
-  <div class="container-fluid">
-    <a class="navbar-brand mx-auto" href="#">Lupita Marin Fotografia</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="categorias.html">Galería</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contacto.html">Contacto</a>
-        </li>
-      </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container-fluid">
+      <a class="navbar-brand mx-auto" href="#">Lupita Marin Fotografia</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categorias.html">Galería</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contacto.html">Contacto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Admin</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="section">
+    <div class="container">
+      <h2 class="title text-center" id="galleryTitle">Galería</h2>
+      <div id="categoryFilters" class="d-flex flex-wrap justify-content-center gap-2 mb-4"></div>
+      <div id="galeria" class="gallery-grouped"></div>
     </div>
   </div>
-</nav>
 
-<div class="section">
-  <div class="container">
-    <h2 class="title text-center" id="galleryTitle">Galería</h2>
-    <div id="categoryFilters" class="d-flex flex-wrap justify-content-center gap-2 mb-4"></div>
-    <div id="galeria" class="gallery-grouped"></div>
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightboxModal" class="lightbox-modal">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose">&times;</button>
+      <img id="lightboxImage" src="" alt="">
+    </div>
   </div>
-</div>
 
-<!-- LIGHTBOX MODAL -->
-<div id="lightboxModal" class="lightbox-modal">
-  <div class="lightbox-content">
-    <button class="lightbox-close" id="lightboxClose">&times;</button>
-    <img id="lightboxImage" src="" alt="">
+  <!-- LOGIN MODAL -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Acceso de Administrador</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="username" class="form-label">Usuario</label>
+              <input type="text" class="form-control" id="username" placeholder="Ingresa tu usuario" required>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
+            </div>
+            <div id="loginError" class="alert alert-danger d-none" role="alert">Usuario o contraseña incorrectos</div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-outline-brown" id="loginBtn">Iniciar Sesión</button>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="data/data.js"></script>
-<script src="js/app.js"></script>
-<script>
-  const titles = {
-    boda_civil: 'Boda Civil',
-    boda_religiosa: 'Boda Religiosa',
-    xv: 'XV Años',
-    ceremonias_presentaciones: 'Presentaciones',
-    ceremonias_bautizos: 'Bautizos',
-    ceremonias_primeras_comuniones: 'Primeras comuniones',  propuestas_matrimonio: 'Propuestas de Matrimonio',    sesion_casual: 'Sesión Casual',
-    sesion_pareja: 'Sesión en pareja',
-    sesion_cumpleanos: 'Sesión de cumpleaños',
-    sesion_newborn: 'Sesión NewBorn',
-    sesion_prenatal: 'Sesión Prenatal',
-    sesiones_familiares: 'Sesiones Familiares',
-    sesiones_infantiles: 'Sesiones Infantiles',
-    sesiones_estudio: 'Sesiones en Estudio'
-  };
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="data/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    const titles = {
+      boda_civil: 'Boda Civil',
+      boda_religiosa: 'Boda Religiosa',
+      xv: 'XV Años',
+      ceremonias_presentaciones: 'Presentaciones',
+      ceremonias_bautizos: 'Bautizos',
+      ceremonias_primeras_comuniones: 'Primeras comuniones', propuestas_matrimonio: 'Propuestas de Matrimonio', sesion_casual: 'Sesión Casual',
+      sesion_pareja: 'Sesión en pareja',
+      sesion_cumpleanos: 'Sesión de cumpleaños',
+      sesion_newborn: 'Sesión NewBorn',
+      sesion_prenatal: 'Sesión Prenatal',
+      sesiones_familiares: 'Sesiones Familiares',
+      sesiones_infantiles: 'Sesiones Infantiles',
+      sesiones_estudio: 'Sesiones en Estudio'
+    };
 
-  const params = new URLSearchParams(window.location.search);
-  let categoria = params.get("cat");
-  const tipo = params.get("tipo");
+    const params = new URLSearchParams(window.location.search);
+    let categoria = params.get("cat");
+    const tipo = params.get("tipo");
 
-  const renderFilterButtons = () => {
-    const container = document.getElementById('categoryFilters');
-    container.innerHTML = '';
+    const renderFilterButtons = () => {
+      const container = document.getElementById('categoryFilters');
+      container.innerHTML = '';
 
-    if (categoria) {
-      // Oculta los botones de filtro cuando ya hay una categoría seleccionada.
-      container.style.display = 'none';
-      return;
-    }
+      if (categoria) {
+        // Oculta los botones de filtro cuando ya hay una categoría seleccionada.
+        container.style.display = 'none';
+        return;
+      }
 
-    container.style.display = 'flex';
+      container.style.display = 'flex';
 
-    const createButton = (slug, label) => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = `btn btn-outline-brown ${categoria === slug ? 'active' : ''}`;
-      button.textContent = label;
-      button.addEventListener('click', () => {
-        categoria = slug;
-        document.getElementById('galleryTitle').textContent = categoria ? titles[categoria] : 'Galería';
+      const createButton = (slug, label) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = `btn btn-outline-brown ${categoria === slug ? 'active' : ''}`;
+        button.textContent = label;
+        button.addEventListener('click', () => {
+          categoria = slug;
+          document.getElementById('galleryTitle').textContent = categoria ? titles[categoria] : 'Galería';
+          renderMedia('galeria', categoria, tipo);
+          updateUrl();
+          renderFilterButtons();
+        });
+        return button;
+      };
+
+      const allButton = document.createElement('button');
+      allButton.type = 'button';
+      allButton.className = `btn btn-outline-brown ${!categoria ? 'active' : ''}`;
+      allButton.textContent = 'Todas';
+      allButton.addEventListener('click', () => {
+        categoria = null;
+        document.getElementById('galleryTitle').textContent = 'Galería';
         renderMedia('galeria', categoria, tipo);
         updateUrl();
         renderFilterButtons();
       });
-      return button;
+      container.appendChild(allButton);
+
+      Object.entries(titles).forEach(([slug, label]) => {
+        container.appendChild(createButton(slug, label));
+      });
     };
 
-    const allButton = document.createElement('button');
-    allButton.type = 'button';
-    allButton.className = `btn btn-outline-brown ${!categoria ? 'active' : ''}`;
-    allButton.textContent = 'Todas';
-    allButton.addEventListener('click', () => {
-      categoria = null;
-      document.getElementById('galleryTitle').textContent = 'Galería';
-      renderMedia('galeria', categoria, tipo);
-      updateUrl();
+    const updateUrl = () => {
+      const url = new URL(window.location);
+      if (categoria) {
+        url.searchParams.set('cat', categoria);
+      } else {
+        url.searchParams.delete('cat');
+      }
+      window.history.replaceState(null, '', url);
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('galleryTitle').textContent = categoria ? titles[categoria] : 'Galería';
       renderFilterButtons();
+      renderMedia('galeria', categoria, tipo);
     });
-    container.appendChild(allButton);
-
-    Object.entries(titles).forEach(([slug, label]) => {
-      container.appendChild(createButton(slug, label));
+  </script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
     });
-  };
 
-  const updateUrl = () => {
-    const url = new URL(window.location);
-    if (categoria) {
-      url.searchParams.set('cat', categoria);
-    } else {
-      url.searchParams.delete('cat');
-    }
-    window.history.replaceState(null, '', url);
-  };
+    // Sistema de Login
+    const VALID_USER = 'lupita';
+    const VALID_PASSWORD = 'Luna85';
 
-  document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('galleryTitle').textContent = categoria ? titles[categoria] : 'Galería';
-    renderFilterButtons();
-    renderMedia('galeria', categoria, tipo);
-  });
-</script>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 1000,
-    once: true
-  });
-</script>
+    document.getElementById('loginBtn').addEventListener('click', function () {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorDiv = document.getElementById('loginError');
+
+      if (username === VALID_USER && password === VALID_PASSWORD) {
+        sessionStorage.setItem('adminLoggedIn', 'true');
+        sessionStorage.setItem('adminUser', username);
+        errorDiv.classList.add('d-none');
+        window.location.href = 'admin.html';
+      } else {
+        errorDiv.classList.remove('d-none');
+      }
+    });
+
+    document.getElementById('loginForm').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        document.getElementById('loginBtn').click();
+      }
+    });
+  </script>
 </body>
+
 </html>

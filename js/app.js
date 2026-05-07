@@ -2,7 +2,12 @@ function renderMedia(containerId, filtro = null, tipo = null) {
   const container = document.getElementById(containerId);
   container.innerHTML = "";
 
-  let data = MEDIA;
+  let data = [...MEDIA];
+  
+  // Agregar imágenes subidas desde localStorage
+  const uploadedImages = JSON.parse(localStorage.getItem('uploadedImages') || '[]');
+  data = data.concat(uploadedImages);
+  
   if (filtro) {
     data = data.filter(item => item.categoria === filtro);
   }
