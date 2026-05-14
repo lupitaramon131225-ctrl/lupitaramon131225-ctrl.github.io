@@ -2,6 +2,11 @@ function renderMedia(containerId, filtro = null, tipo = null) {
   const container = document.getElementById(containerId);
   container.innerHTML = "";
 
+  const descriptionEl = document.getElementById('categoryDescription');
+  if (descriptionEl) {
+    descriptionEl.textContent = filtro ? categoryDescriptions[filtro] || 'Explora el estilo y motivo de esta colección.' : 'Explora cada estilo y motivo de fotografía disponible en la galería.';
+  }
+
   let data = [...MEDIA];
   
   // Agregar imágenes subidas desde localStorage
@@ -56,6 +61,9 @@ function renderMedia(containerId, filtro = null, tipo = null) {
         if (orientation === 'horizontal') {
           verticalGroup.removeChild(itemWrapper);
           horizontalGroup.appendChild(itemWrapper);
+          card.classList.remove('vertical');
+        } else {
+          card.classList.add('vertical');
         }
       });
       

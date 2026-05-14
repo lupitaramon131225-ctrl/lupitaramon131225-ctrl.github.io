@@ -12,35 +12,48 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container-fluid">
-      <a class="navbar-brand mx-auto" href="#">Lupita Marin Fotografia</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-brown" href="index.html">Lupita Marin Fotografia</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link text-brown" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="categorias.html">Galería</a>
+            <a class="nav-link text-brown" href="categorias.html">Galería</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contacto.html">Contacto</a>
+            <a class="nav-link text-brown" href="contacto.html">Contacto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Admin</a>
+            <a class="nav-link text-brown" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Admin</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <div class="section">
+  <div class="section gallery-section">
     <div class="container">
       <h2 class="title text-center" id="galleryTitle">Galería</h2>
+      <p id="categoryDescription" class="gallery-description">Explora cada estilo y motivo de fotografía disponible en la galería.</p>
+      <div id="categoryVideoSection" class="category-video-block mb-4 d-none">
+        <div class="ratio ratio-16x9 rounded-4 shadow-lg overflow-hidden border border-brown">
+          <video id="categoryVideoPlayer" controls preload="metadata" class="w-100 h-100" playsinline>
+            <source id="categoryVideoSource" src="" type="video/mp4">
+            Tu navegador no soporta videos.
+          </video>
+        </div>
+        <div id="categoryVideoCaption" class="text-center mt-3">
+          <h5 class="text-brown mb-1"></h5>
+          <p class="text-muted mb-0"></p>
+        </div>
+      </div>
       <div id="categoryFilters" class="d-flex flex-wrap justify-content-center gap-2 mb-4"></div>
       <div id="galeria" class="gallery-grouped"></div>
     </div>
@@ -87,25 +100,9 @@
   <script src="data/data.js"></script>
   <script src="js/app.js"></script>
   <script>
-    const titles = {
-      boda_civil: 'Boda Civil',
-      boda_religiosa: 'Boda Religiosa',
-      xv: 'XV Años',
-      ceremonias_presentaciones: 'Presentaciones',
-      ceremonias_bautizos: 'Bautizos',
-      ceremonias_primeras_comuniones: 'Primeras comuniones', propuestas_matrimonio: 'Propuestas de Matrimonio', sesion_casual: 'Sesión Casual',
-      sesion_pareja: 'Sesión en pareja',
-      sesion_cumpleanos: 'Sesión de cumpleaños',
-      sesion_newborn: 'Sesión NewBorn',
-      sesion_prenatal: 'Sesión Prenatal',
-      sesiones_familiares: 'Sesiones Familiares',
-      sesiones_infantiles: 'Sesiones Infantiles',
-      sesiones_estudio: 'Sesiones en Estudio'
-    };
-
     const params = new URLSearchParams(window.location.search);
-    let categoria = params.get("cat");
-    const tipo = params.get("tipo");
+    let categoria = params.get('cat');
+    const tipo = params.get('tipo');
 
     const renderFilterButtons = () => {
       const container = document.getElementById('categoryFilters');
@@ -126,7 +123,7 @@
         button.textContent = label;
         button.addEventListener('click', () => {
           categoria = slug;
-          document.getElementById('galleryTitle').textContent = categoria ? titles[categoria] : 'Galería';
+          updateHeader();
           renderMedia('galeria', categoria, tipo);
           updateUrl();
           renderFilterButtons();
@@ -140,14 +137,14 @@
       allButton.textContent = 'Todas';
       allButton.addEventListener('click', () => {
         categoria = null;
-        document.getElementById('galleryTitle').textContent = 'Galería';
+        updateHeader();
         renderMedia('galeria', categoria, tipo);
         updateUrl();
         renderFilterButtons();
       });
       container.appendChild(allButton);
 
-      Object.entries(titles).forEach(([slug, label]) => {
+      Object.entries(categoryTitles).forEach(([slug, label]) => {
         container.appendChild(createButton(slug, label));
       });
     };
@@ -162,8 +159,73 @@
       window.history.replaceState(null, '', url);
     };
 
+    const categoryVideos = {
+      boda_religiosa: {
+        src: 'assets/vid/boda-2.mp4',
+        title: 'Boda Religiosa',
+        desc: 'El amor bendecido en cada escena.'
+      },
+      sesion_pareja: {
+        src: 'assets/vid/pareja.mp4',
+        title: 'Sesión en Pareja',
+        desc: 'Complicidad y ternura juntos.'
+      },
+      ceremonias_presentaciones: {
+        src: 'assets/vid/presentacion.mp4',
+        title: 'Presentación Familiar',
+        desc: 'Celebración de fe y unión familiar.'
+      },
+      propuestas_matrimonio: {
+        src: 'assets/vid/propuesta.mp4',
+        title: 'Propuesta de Matrimonio',
+        desc: 'El gran sí capturado en video.'
+      },
+      xv: {
+        src: 'assets/vid/XV.mp4',
+        title: 'XV Años',
+        desc: 'La magia de tus quince celebrada en movimiento.'
+      }
+    };
+
+    const updateCategoryVideo = (selectedCategory) => {
+      const section = document.getElementById('categoryVideoSection');
+      const player = document.getElementById('categoryVideoPlayer');
+      const source = document.getElementById('categoryVideoSource');
+      const captionTitle = document.querySelector('#categoryVideoCaption h5');
+      const captionText = document.querySelector('#categoryVideoCaption p');
+
+      if (!section || !player || !source || !captionTitle || !captionText) {
+        return;
+      }
+
+      const videoInfo = selectedCategory ? categoryVideos[selectedCategory] : null;
+      if (videoInfo) {
+        section.classList.remove('d-none');
+        source.src = videoInfo.src;
+        captionTitle.textContent = videoInfo.title;
+        captionText.textContent = videoInfo.desc;
+        player.load();
+        player.play().catch(() => {});
+      } else {
+        section.classList.add('d-none');
+        player.pause();
+        player.currentTime = 0;
+      }
+    };
+
+    const updateHeader = () => {
+      const title = categoria && categoryTitles[categoria] ? categoryTitles[categoria] : 'Galería';
+      const description = categoria && categoryDescriptions[categoria]
+        ? categoryDescriptions[categoria]
+        : 'Explora cada estilo y motivo de fotografía disponible en la galería.';
+
+      document.getElementById('galleryTitle').textContent = title;
+      document.getElementById('categoryDescription').textContent = description;
+      updateCategoryVideo(categoria);
+    };
+
     document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('galleryTitle').textContent = categoria ? titles[categoria] : 'Galería';
+      updateHeader();
       renderFilterButtons();
       renderMedia('galeria', categoria, tipo);
     });
