@@ -1,4 +1,4 @@
-// ESTE ARCHIVO SE GENERA AUTOMÁTICAMENTE. No edites directamente.
+﻿// ESTE ARCHIVO SE GENERA AUTOMÁTICAMENTE. No edites directamente.
 // Ejecuta: node scripts/generate-gallery-data.js
 
 const categoryData = {
@@ -212,8 +212,11 @@ const categoryData = {
       "27.jpeg",
       "28.jpeg",
       "29.jpeg",
-      "WhatsApp Image 2026-05-03 at 1.58.12 PM (1).jpeg",
-      "WhatsApp Image 2026-05-03 at 1.58.12 PM.jpeg",
+      "30.jpeg",
+      "31.jpeg",
+      "32.jpeg",
+      "33.jpeg",
+      "34.jpeg",
     ]
   },
   "sesion_cumpleanos": {
@@ -277,6 +280,9 @@ const categoryData = {
       "33.jpeg",
       "34.jpeg",
       "35.jpeg",
+      "36.jpeg",
+      "37.jpeg",
+      "38.jpeg",
     ]
   },
   "sesion_newborn": {
@@ -306,6 +312,8 @@ const categoryData = {
       "20.jpeg",
       "21.jpeg",
       "22.jpeg",
+      "23.jpeg",
+      "24.jpeg",
     ]
   },
   "sesion_prenatal": {
@@ -385,6 +393,8 @@ const categoryData = {
       "20.jpeg",
       "21.jpeg",
       "22.jpeg",
+      "23.jpeg",
+      "24.jpeg",
     ]
   },
   "sesiones_infantiles": {
@@ -427,6 +437,7 @@ const categoryData = {
       "33.jpeg",
       "34.jpeg",
       "35.jpeg",
+      "36.jpeg",
     ]
   },
   "xv": {
@@ -456,6 +467,10 @@ const categoryData = {
       "20.jpeg",
       "21.jpeg",
       "22.jpeg",
+      "23.jpeg",
+      "24.jpeg",
+      "25.jpeg",
+      "26.jpeg",
     ]
   },
 };
