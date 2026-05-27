@@ -187,9 +187,8 @@ function renderMedia(containerId, filtro = null, tipo = null) {
 
     data.forEach((item, index) => {
       const itemWrapper = document.createElement('div');
-      itemWrapper.classList.add('gallery-item');
-      itemWrapper.setAttribute('data-aos', 'fade-up');
-      itemWrapper.setAttribute('data-aos-delay', String((index % 4) * 100));
+      itemWrapper.classList.add('gallery-item', 'fade-pop-item');
+      itemWrapper.style.transitionDelay = `${(index % 4) * 80}ms`;
 
       const card = document.createElement('div');
       card.classList.add('card', 'gallery-card');
@@ -243,11 +242,37 @@ function renderMedia(containerId, filtro = null, tipo = null) {
     container.appendChild(verticalGroup);
     container.appendChild(horizontalGroup);
     
+    // Initialize fade-pop reveal for images on scroll
+    initializeFadePopObserver(container);
+
     // Refresh AOS to detect new elements and apply animations
     if (typeof AOS !== 'undefined') {
       AOS.refresh();
     }
   }, MIN_SKELETON_MS);
+}
+
+function initializeFadePopObserver(container) {
+  const items = container.querySelectorAll('.fade-pop-item');
+  if (!items.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(item => item.classList.add('visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  items.forEach(item => observer.observe(item));
 }
 
 function openLightbox(imageSrc) {
@@ -320,11 +345,20 @@ document.addEventListener('DOMContentLoaded', () => {
     boda_religiosa: ['step1', 'serviceStep', 'churchStep', 'locationStep', 'dateTimeStep', 'preparativesStep', 'extraStep', 'contactStep'],
     boda_civil: ['step1', 'serviceStep', 'locationStep', 'dateTimeStep', 'preparativesStep', 'extraStep', 'contactStep'],
     ceremonia_fe: ['step1', 'ceremonyTypeStep', 'serviceStep', 'churchStep', 'dateTimeStep', 'extraStep', 'contactStep'],
-    sesion_fotos: ['step1', 'photoTypeStep', 'sessionTypeStep', 'locationStep', 'sessionDateStep', 'extraStep', 'contactStep'],
+    sesion_fotos: ['step1', 'photoTypeStep', 'sessionTypeStep', 'sessionDateStep', 'extraStep', 'contactStep'],
     propuesta_matrimonio: ['step1', 'serviceStep', 'locationStep', 'dateTimeStep', 'hoursStep', 'extraStep', 'contactStep'],
     xv: ['step1', 'serviceStep', 'churchStep', 'locationStep', 'dateTimeStep', 'preparativesXVStep', 'extraStep', 'contactStep'],
     otro: ['step1', 'serviceStep', 'locationStep', 'dateTimeStep', 'extraStep', 'contactStep']
   };
+
+  function buildSesionFotosFlow(sessionType) {
+    const flow = ['step1', 'photoTypeStep', 'sessionTypeStep'];
+    if (sessionType && sessionType.toLowerCase().includes('casual')) {
+      flow.push('casualLocationStep');
+    }
+    flow.push('sessionDateStep', 'extraStep', 'contactStep');
+    return flow;
+  }
 
   let currentFlow = [];
   let currentStep = 0;
@@ -460,6 +494,15 @@ document.addEventListener('DOMContentLoaded', () => {
       currentFlow = flowConfig[eventType] || flowConfig.otro;
       currentStep = 1; // Move to next step
       showStep(currentStep);
+    });
+  });
+
+  // Update session flow when session type is selected so location is asked only for Casual sessions
+  document.querySelectorAll('input[name="sessionType"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      if (currentFlow && currentFlow.includes('sessionTypeStep')) {
+        currentFlow = buildSesionFotosFlow(e.target.value);
+      }
     });
   });
 

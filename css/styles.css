@@ -641,6 +641,17 @@ body.loading {
   animation: fadeIn 0.3s ease-in;
 }
 
+.fade-pop-item {
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-pop-item.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
