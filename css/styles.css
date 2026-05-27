@@ -551,3 +551,139 @@ body.loading {
     transform: rotate(360deg);
   }
 }
+
+/* SKELETON PLACEHOLDERS */
+.skeleton-card {
+  background: linear-gradient(90deg, #efe9df 25%, #ece3d8 37%, #efe9df 63%);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+  min-height: 200px;
+}
+
+.skeleton-item { display: block; }
+
+.skeleton-img {
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(90deg, #e9e2da 25%, #f3ece3 37%, #e9e2da 63%);
+  animation: skeleton-loading 1.2s linear infinite;
+}
+
+.skeleton-line {
+  height: 12px;
+  background: linear-gradient(90deg, #e9e2da 25%, #f3ece3 37%, #e9e2da 63%);
+  margin: 8px 0;
+  border-radius: 6px;
+  animation: skeleton-loading 1.2s linear infinite;
+}
+
+.skeleton-title { width: 60%; height: 14px; }
+.skeleton-text { width: 90%; }
+
+@keyframes skeleton-loading {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+/* Overlay used to place skeletons on top of existing static sections */
+.skeleton-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px;
+  gap: 16px;
+  z-index: 1500;
+  background: rgba(245, 240, 235, 0.85);
+  border-radius: inherit;
+}
+
+.skeleton-overlay-inner {
+  width: 100%;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.skeleton-overlay .gallery-card { box-shadow: none; }
+
+/* Skeleton row stagger animation */
+.skeleton-row {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 360ms ease, transform 360ms ease;
+}
+
+.skeleton-row.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skeleton-appear-delay-1 { transition-delay: 0ms; }
+.skeleton-appear-delay-2 { transition-delay: 120ms; }
+.skeleton-appear-delay-3 { transition-delay: 240ms; }
+.skeleton-appear-delay-4 { transition-delay: 360ms; }
+.skeleton-appear-delay-5 { transition-delay: 480ms; }
+
+/* WhatsApp Form Styles */
+.form-step {
+  display: none;
+}
+
+.form-step.active,
+.form-step:not(.d-none) {
+  display: block;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.help-icon {
+  color: #8B4513;
+  margin-left: 5px;
+  cursor: help;
+  font-size: 0.9rem;
+}
+
+.help-icon:hover {
+  color: #A0522D;
+}
+
+.btn-group .btn {
+  margin: 4px 2px;
+}
+
+.modal-content {
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.modal-header {
+  border-bottom: 2px solid #F5F5DC;
+  background-color: #F5F5DC;
+}
+
+/* Update WhatsApp button style */
+.whatsapp-float {
+  background-color: #25D366;
+  border: none;
+}
+
+.whatsapp-float:hover {
+  background-color: #128C7E;
+}
+
+.whatsapp-float i {
+  font-size: 1.3rem;
+}
+
+
